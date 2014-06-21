@@ -1,5 +1,5 @@
 # Vendored files and directories are excluded from language statistics.
 
 #
-- .tcl$
-- .msg$
+- *.tcl$
+- *.msg$
