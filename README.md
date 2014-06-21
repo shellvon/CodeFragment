@@ -7,6 +7,8 @@
 * mine.py 当时刚学pygame.然后就。恰好属于光棍节时节~于是就。。
 * money.java 初学java
 * classtb.js/.py 油猴/爬虫。自己可以在chrome下查询自己学校的课表
+* jwc_gui.py/JWC_demo.py 学校教务处一些处理，比如选课/自动评教等。
+
 ##Notes:
 之所以代码还在，全是因为我居然在一年前放了3段代码在[OSchina][oschina]也不知道自己当时怎么想的
 
