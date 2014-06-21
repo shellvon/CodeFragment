@@ -1,5 +1,9 @@
 # Vendored files and directories are excluded from language statistics.
 
-#
-- *.tcl$
-- *.msg$
+#- dist/
+#- dist/tcl/(tcl8\.5|tk8\.5)/
+
+- \.tcl$
+- \.msg$
+
+
