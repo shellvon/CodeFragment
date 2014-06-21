@@ -1,4 +1,5 @@
 # Vendored files and directories are excluded from language statistics.
 
-#dist
-- ^dist/
+#
+- .tcl$
+- .msg$
