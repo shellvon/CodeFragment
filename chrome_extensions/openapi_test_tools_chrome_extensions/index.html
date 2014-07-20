@@ -2,33 +2,133 @@
 <html ng-app lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Open Api Test System</title>
-    <script type="text/javascript" src="js/angular.min.js"></script>
-    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
-    <script type="text/javascript" src="js/fuck.js"></script>
-    <style type="text/css">
-    ul{
-        list-style-type: none;
-        -webkit-padding-start:0;
-    }
-    </style>
+	<title>Open Api Test Tool.</title>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="js/jsondata.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<style>
+/*something...*/
+.item{
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.need{
+	color: red;
+}
+.apiname{
+	height: 34px;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+}
+.apiname:focus{
+	border-color: #66afe9;
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+}
+#send{
+	float: right;
+}
+.tocenter{
+	margin-top: 120px;
+}
+/*
+highlight the json
+*/
+
+pre{
+	background-color: rgb(29,40,34);/*sublimetext2 color.*/
+}
+.string{
+	color: #c4e3f3;
+}
+.number{
+	color:#6fc5bc;
+}
+.boolean{
+	color: #6f9ac5;
+}
+.null{
+	color: #6f9ac5;
+}
+.key{
+	color: #dff0d8;
+}
+.brace{
+	color:#f09158;
+}
+#showinfo{
+	display: none;
+}
+	</style>
 </head>
 <body>
-    <h2>Openapi test system</h2>
-    <div ng-controller="apiController">
-    <ul ng-repeat="args in params">
-         <li><label for="{{args.text}}">{{args.text}}:</label><input name="{{args.text}}"  size="40" placeholder="{{args.placeholder}}" value="{{args.val}}"/></li>
-    </ul>
-    <strong>Choose API:</strong>
-    <select ng-model="api" ng-change="getApi(api)">
-        <option ng-repeat="api in apis" value="{{api.name}}">{{api.name}}</option>
-    </select>
-    <input type="button" id="send" name="{{url}}" value="Send">
-    <input type="hidden" id="parameter" value="{{parameterList}}">
-    <ul ng-repeat="item in postdata">
-        <li><label for="{{item.value}}">{{item.value}}:</label><input name="{{item.value}}" size="40" placeholder="Sample: {{item.example}}"/></li>
-    </ul>
-    <div id ="result"></div>
-    </div>
+	<div class="container-fluid" ng-controller="apiController">
+		<div class="row-fluid">
+			<div class="row">
+				<div class="col-md-offset-3 col-md-6">
+					<div class="tocenter panel panel-primary">
+						<div class="panel-heading">
+							<h1 class="panel-title text-center">OpenApi Test Tool</h1>
+						</div>
+						<div class="panel-body">
+							 <p id="showinfo" class="text-center alert alert-info"></p>
+							 <div ng-repeat="args in params"> 
+								 <div class="form-group form-horizontal">
+									<label class="item col-md-2 col-md-offset-3 control-label text-right">{{args.text}}:</label>
+									<div class="col-md-4">
+										<input class="item form-control" name="{{args.text}}" type="text" placeholder="{{args.placeholder}}" value="{{args.val}}">
+									</div>
+								</div>
+							</div>
+							<div class="form-group form-horizontal">
+								<label class="item need col-md-2 col-md-offset-3 control-label text-right">Choose API:</label>
+								<div class="col-md-4">
+									<select class="item apiname" ng-options="api.name for api in apis" ng-model="api" ng-change="getApi(api)">
+										<option value="">----请选择----</option>
+									</select>
+									<input type="button" class="item btn btn-primary" id="send" name="{{apiname}}" value="Send">
+									<input type="hidden" id="parameter" value="{{parameterList}}">
+								</div>
+							</div>
+							
+							<div ng-repeat="item in postdata"> 
+								 <div class="form-group form-horizontal">
+									<label class="item col-md-2 col-md-offset-3 control-label text-right">{{item.value}}:</label>
+									<div class="col-md-4">
+										<input class="item form-control" id="focusedInput" type="text" name="{{item.value}}" placeholder="Sample:{{item.example}}">
+									</div>
+								</div>
+							</div>
+							<div class="tabbable col-md-12" id="tabs-432914">
+								<ul class="nav nav-tabs">
+									<li class="active">
+										<a href="#panel-260100" data-toggle="tab">Table</a>
+									</li>
+									<li>
+										<a href="#panel-74802" data-toggle="tab">JSON</a>
+									</li>
+								</ul>
+								<div class="tab-content">
+									<div class="tab-pane active" id="panel-260100">
+										<!--table here-->
+										<p class="text-center alert alert-info">暂无结果.</p>
+									</div>
+									<div class="tab-pane" id="panel-74802">
+										<!-- json display here-->
+										<p class="text-center alert alert-info">暂无结果.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="panel-footer text-center">
+							Copyright 2014.By <a href="http://happinessjiajia.com">shellvon<a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

@@ -1,11 +1,11 @@
 {
     "manifest_version": 2,
 
-    "name": "api test",
-    "description": "openapiTest",
+    "name": "open api test tool",
+    "description": "用于测试OpenApi的接口工具,以提高测试效率",
     "version": "0.1",
     "icons":{
-        "128":"images/icon.jpg"
+        "128":"images/chrome-128.png"
     },
     "permissions": [
         "http://*/*"
