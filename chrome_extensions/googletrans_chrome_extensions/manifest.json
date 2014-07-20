@@ -1,0 +1,24 @@
+{
+	"manifest_version":2,
+	"name":"Google Translate",
+	"version":"0.1",
+	"description":"Translate English to chinese.",
+	"author":"shellvon",
+	"permissions": [
+      "contextMenus"
+  	],
+  "icons":{
+  		"16":"images/16.png"
+  	},
+  "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["js/fuck.js"]
+        }
+    ],
+  "options_page": "index.html",
+  "background": {
+    	"scripts": ["js/main.js"]
+  	},
+  "web_accessible_resources": ["images/64.png","fuck.js"]
+}

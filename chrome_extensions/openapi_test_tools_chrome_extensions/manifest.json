@@ -1,0 +1,18 @@
+{
+    "manifest_version": 2,
+
+    "name": "api test",
+    "description": "openapiTest",
+    "version": "0.1",
+    "icons":{
+        "128":"images/icon.jpg"
+    },
+    "permissions": [
+        "http://*/*"
+    ],
+    "app": {
+        "launch":{
+            "local_path":"index.html"
+        }
+    }
+}
