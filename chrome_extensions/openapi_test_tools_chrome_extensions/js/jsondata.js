@@ -41,6 +41,11 @@ var default_apis = [
                     'value':'page_size',
                     'example':1,
                     'needed':true
+                },
+                {
+                    'value':'status',
+                    'example':1,
+                    'needed':true
                 }
             ]
         },
@@ -84,7 +89,7 @@ var default_apis = [
                     'needed':true
                 },
                 {
-                    'value':'logistic_track_id',
+                    'value':'logistic_track_no',
                     'example':'a_string',
                     'needed':true
                 },

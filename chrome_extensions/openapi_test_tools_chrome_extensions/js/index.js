@@ -68,10 +68,17 @@ function mktable(json,id)
                 break;
             }
         }
-        if($.type(val)==='object'){
-            mid = new Date().getTime();
+        if($.type(val)=='object'){
+            mid = guid();
             td+="<td id='"+mid+"'></td>"
             mktable(val,mid);
+        }
+        else if(val instanceof Array){
+        	for (var i = val.length - 1; i >= 0; i--) {
+        		mid = guid();
+            	td+="<td id='"+mid+"'></td>"
+        		mktable(val[i],mid);
+        	};
         }
         else
             td +="<td>"+val+"</td>"
@@ -81,7 +88,18 @@ function mktable(json,id)
     html ='<table id="'+id+'" class="table table-bordered table-hover table-condensed" border="1">'+html+'</table>';
     stk.push({'id':id,'html':html});
 }
-
+//http://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid-in-javascript
+var guid = (function() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+               .toString(16)
+               .substring(1);
+  }
+  return function() {
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+           s4() + '-' + s4() + s4() + s4();
+  };
+})();
 //展示提示信息
 function displayInfo (msg) {
         jQuery('#showinfo').text(msg).fadeIn(1000);
@@ -191,7 +209,8 @@ jQuery(function(){
                                         $('#panel-74802').html(info);
                                         return;
                                     }
-                                    buildHtmlTable(res);
+                                    //buildHtmlTable(res);
+                                    $("#panel-260100").html('<p class="text-center alert alert-info">对不起,暂停该功能^_^.</p>')
                                     var json = JSON.stringify(res,null,'\t');
                                     html = '<pre id="result" class="col-md-12">'+highlightJson(json)+'</pre>';
                                     $("#panel-74802").html(html);
